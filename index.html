@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>https://Jadwal/Shift.pagi&/libur.com</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600&display=swap" rel="stylesheet">
+  <style>
+    /* Global Reset dan Tipografi */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f0f2f5;
+      color: #333;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Container dan Layout */
+    .container {
+      max-width: 960px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    /* Tombol */
+    .button-group {
+      margin: 20px 0;
+      text-align: center;
+    }
+    .btn {
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 5px;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+    }
+    .btn-izin {
+      background: #ffc107;
+      color: #333;
+    }
+    .btn-izin:hover {
+      background: #e0a800;
+    }
+    .btn-aturan {
+      background: #17a2b8;
+      color: #fff;
+    }
+    .btn-aturan:hover {
+      background: #138496;
+    }
+    /* Tabel */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+    th, td {
+      padding: 14px;
+      text-align: center;
+      border: 1px solid #ddd;
+      transition: background 0.3s;
+    }
+    th {
+      background: #007bff;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+    td {
+      background: #fafafa;
+    }
+    tr:hover td {
+      background: #f1f1f1;
+    }
+    .pagi {
+      background: #28a745;
+      color: #fff;
+      font-weight: 600;
+    }
+    .libur {
+      background: #dc3545;
+      color: #fff;
+      font-weight: 600;
+    }
+    .kosong {
+      background: #adb5bd;
+      color: #fff;
+    }
+    .highlight {
+      background: #ffc107 !important;
+      color: #333 !important;
+      font-weight: 700;
+      animation: pulse 1s infinite alternate;
+    }
+    @keyframes pulse {
+      from { background: #ffc107; }
+      to { background: #ffdd57; }
+    }
+    /* Judul Section */
+    .section-title {
+      font-size: 1.5rem;
+      color: #007bff;
+      margin: 20px 0 10px;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 5px;
+      text-transform: uppercase;
+    }
+    /* Mode Gelap */
+    .dark-mode {
+      background: #121212;
+      color: #ddd;
+    }
+    .dark-mode .container {
+      background: #1e1e1e;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
+    .dark-mode header h1 {
+      background: linear-gradient(135deg, #444, #222);
+    }
+    .dark-mode th {
+      background: #333;
+      color: #fff;
+    }
+    .dark-mode td {
+      background: #1e1e1e;
+      color: #ddd;
+    }
+    .dark-mode .pagi {
+      background: #198754;
+    }
+    .dark-mode .libur {
+      background: #b02a37;
+    }
+    .dark-mode .kosong {
+      background: #555;
+    }
+    .dark-mode tr:hover td {
+      background: #2a2a2a;
+    }
+    /* Tombol Toggle Mode Gelap */
+    .dark-mode-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #343a40;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      z-index: 1000;
+    }
+    .dark-mode-btn:hover {
+      background: #23272b;
+      transform: rotate(15deg);
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container {
+        margin: 10px;
+        padding: 15px;
+      }
+      header h1 {
+        font-size: 1.5rem;
+        padding: 10px;
+      }
+      th, td {
+        padding: 10px;
+        font-size: 0.85rem;
+      }
+      .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+      .dark-mode-btn {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+      }
+    }
+    
+    /* 3D Enhancement */
+    .container {
+      perspective: 1500px;
+    }
+    .container > * {
+      transform-style: preserve-3d;
+    }
+    header h1, .button-group, table, .section-title {
+      transition: transform 0.3s;
+    }
+    .container:hover header h1 {
+      transform: translateZ(20px);
+    }
+    .container:hover .button-group {
+      transform: translateZ(20px);
+    }
+    .container:hover table {
+      transform: translateZ(20px);
+    }
+    .container:hover .section-title {
+      transform: translateZ(20px);
+    }
+    table tr {
+      transition: transform 0.3s, box-shadow 0.3s;
+      transform-style: preserve-3d;
+    }
+    table tr:hover {
+      transform: translateZ(10px) rotateY(5deg);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    .btn:hover {
+      transform: scale(1.05) translateZ(10px);
+    }
+  </style>
+</head>
+<body>
+  <!-- Tombol Toggle Mode Gelap -->
+  <button class="dark-mode-btn" onclick="toggleDarkMode()">🌙</button>
+  
+  <div class="container">
+    <header>
+      <h1>JADWAL SHIFT PAGI & LIBUR</h1>
+    </header>
+    
+    <div class="button-group">
+      <a id="btn-izin-karyawan" class="btn btn-izin" href="Halaman.ijin.fulltime.html" target="_blank">Izin/Full time</a>
+      <a id="btn-peraturan-kerja" class="btn btn-aturan" href="Halaman.peraturan.html" target="_blank">Peraturan Kerja</a>
+    </div>
+    
+    <!-- Minggu Pertama -->
+    <section>
+      <div class="section-title">Minggu Pertama</div>
+      <table>
+        <tr>
+          <th>Hari</th>
+          <th>Shift Pagi</th>
+          <th>Libur</th>
+        </tr>
+        <tr><td>Senin</td><td class="pagi">Garin</td><td class="libur">Rizky</td></tr>
+        <tr><td>Selasa</td><td class="pagi">Ridho</td><td class="libur">Garin</td></tr>
+        <tr><td>Rabu</td><td class="pagi">Dalli</td><td class="libur">Indra</td></tr>
+        <tr><td>Kamis</td><td class="pagi">Zuki</td><td class="kosong">-</td></tr>
+        <tr><td>Jum'at</td><td class="kosong">Masuk sore jam 14.30.wib</td><td class="kosong">-</td></tr>
+        <tr><td>Sabtu</td><td class="kosong">Full time</td><td class="kosong">-</td></tr>
+        <tr><td>Minggu</td><td class="pagi">Rizki</td><td class="kosong">-</td></tr>
+      </table>
+    </section>
+    
+    <!-- Minggu Kedua -->
+    <section>
+      <div class="section-title">Minggu Kedua</div>
+      <table>
+        <tr>
+          <th>Hari</th>
+          <th>Shift Pagi</th>
+          <th>Libur</th>
+        </tr>
+        <tr><td>Senin</td><td class="pagi">Garin</td><td class="libur">Zuki</td></tr>
+        <tr><td>Selasa</td><td class="pagi">Ridho</td><td class="libur">Dalli</td></tr>
+        <tr><td>Rabu</td><td class="pagi">Dalli</td><td class="libur">Ridho</td></tr>
+        <tr><td>Kamis</td><td class="pagi">Zuki</td><td class="kosong">-</td></tr>
+        <tr><td>Jum'at</td><td class="kosong">Masuk sore jam 14.30.wib</td><td class="kosong">-</td></tr>
+        <tr><td>Sabtu</td><td class="kosong">Full time</td><td class="kosong">-</td></tr>
+        <tr><td>Minggu</td><td class="pagi">Rizki</td><td class="kosong">-</td></tr>
+      </table>
+    </section>
+  </div>
+  
+ <!-- Hak Cipta -->
+  <footer>
+    &copy; 2025 Bay:Indra. Semua Hak Cipta Dilindungi.
+  </footer>
+  
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+    }
+    
+    function highlightToday() {
+      const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"];
+      const todayIndex = new Date().getDay();
+      document.querySelectorAll("table").forEach(table => {
+        table.querySelectorAll("tr").forEach(row => {
+          if (row.cells[0] && row.cells[0].textContent.trim() === days[todayIndex]) {
+            row.classList.add("highlight");
+          }
+        });
+      });
+    }
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      if (localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark-mode");
+      }
+      highlightToday();
+    });
+  </script>
+</body>
+</html>

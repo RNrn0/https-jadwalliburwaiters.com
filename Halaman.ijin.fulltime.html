@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>https://ijin.full/time.com</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600&display=swap" rel="stylesheet">
+  <style>
+    /* Global Reset dan Tipografi */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f0f2f5;
+      color: #333;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+    /* Tombol Toggle Mode Gelap */
+    .dark-mode-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #343a40;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      z-index: 1000;
+    }
+    .dark-mode-btn:hover {
+      background: #23272b;
+      transform: rotate(15deg);
+    }
+    /* Container */
+    .container {
+      max-width: 960px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      overflow: hidden;
+      perspective: 1500px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+      transform-style: preserve-3d;
+    }
+    header h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    header h1:hover {
+      transform: translateZ(20px);
+    }
+    /* Tombol Refresh Data */
+    .refresh-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      background: #17a2b8;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .refresh-btn:hover {
+      background: #138496;
+    }
+    /* Tabel */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      transform-style: preserve-3d;
+      transition: transform 0.3s;
+    }
+    th, td {
+      padding: 14px;
+      text-align: center;
+      border: 1px solid #ddd;
+      transition: background 0.3s;
+    }
+    th {
+      background: #007bff;
+      color: #fff;
+      text-transform: uppercase;
+    }
+    td {
+      background: #fafafa;
+    }
+    tr:hover td {
+      background: #f1f1f1;
+      transform: translateZ(10px);
+    }
+    table:hover {
+      transform: translateZ(20px);
+    }
+    /* Mode Gelap */
+    .dark-mode {
+      background: #121212;
+      color: #ddd;
+    }
+    .dark-mode .container {
+      background: #1e1e1e;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    }
+    .dark-mode header h1 {
+      background: linear-gradient(135deg, #444, #222);
+    }
+    .dark-mode th {
+      background: #333;
+      color: #fff;
+    }
+    .dark-mode td {
+      background: #1e1e1e;
+      color: #ddd;
+    }
+    .dark-mode tr:hover td {
+      background: #2a2a2a;
+    }
+    /* Jarak untuk Full Time Section */
+    .full-time-section {
+      margin-top: 40px;
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container {
+        margin: 10px;
+        padding: 15px;
+      }
+      header h1 {
+        font-size: 1.5rem;
+        padding: 10px;
+      }
+      th, td {
+        padding: 10px;
+        font-size: 0.85rem;
+      }
+      .refresh-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+      }
+      .dark-mode-btn {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Tombol Toggle Mode Gelap -->
+  <button class="dark-mode-btn" onclick="toggleDarkMode()">🌙</button>
+  
+  <div class="container">
+    <header>
+      <h1>Total Ijin Karyawan</h1>
+    </header>
+    
+    <!-- Tombol Refresh Data -->
+    <a href="#" class="refresh-btn" onclick="location.reload();">Refresh Data</a>
+    
+    <table>
+      <tr>
+        <th>Hari</th>
+        <th>Nama</th>
+        <th>Tanggal</th>
+        <th>Total Ijin</th>
+      </tr>
+      <tr>
+        <td>Senin</td>
+        <td>Garin</td>
+        <td>03-03-2025</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Selasa</td>
+        <td>Ridho</td>
+        <td>04-03-2025</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Rabu</td>
+        <td>Dalli</td>
+        <td>05-03-2025</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Kamis</td>
+        <td>Zuki</td>
+        <td>06-03-2025</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Jum'at</td>
+        <td>Kosong</td>
+        <td>06-03-2025</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Sabtu</td>
+        <td>Full time</td>
+        <td>06-03-2025</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Minggu</td>
+        <td>Rizky</td>
+        <td>06-03-2025</td>
+        <td>1</td>
+      </tr>
+    </table>
+  </div>
+  
+
+  <!-- Bagian Full Time -->
+  <div class="container full-time-section">
+    <header>
+      <h1>Full Time</h1>
+    </header>
+
+    <table>
+      <tr>
+        <th>Nama</th>
+        <th>Hari</th>
+        <th>Jam Kerja</th>
+        <th>Total full time</th>
+      </tr>
+      <tr>
+        <td>Indra</td>
+        <td>Sabtu Full Time</td>
+        <td>07:00 - 15:00 - 17:00 -</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Zuki</td>
+        <td>Sabtu Full Time</td>
+        <td>07:00 - 15:00 - 17:00 -</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Ridho</td>
+        <td>Sabtu Full time</td>
+        <td>07:00 - 15:00 - 17:00 -</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Garin</td>
+        <td>Sabtu Full time</td>
+        <td>07:00 - 15:00 - 17:00 -</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Dalli</td>
+        <td>Sabtu Full time</td>
+        <td>07:00 - 15:00 - 17:00 -</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Rizky</td>
+        <td>Sabtu Full Time</td>
+        <td>07:00 - 15:00 - 17:00 -</td>
+        <td>0</td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+    }
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      if (localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark-mode");
+      }
+    });
+  </script>
+</body>
+</html>
